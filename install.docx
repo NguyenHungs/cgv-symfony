@@ -1,0 +1,14 @@
+Run : php bin/console server:run 0.0.0.0:8080
+Xóa cache: php bin/console cache:clear
+Create controller: php bin/console make:controller HomeController
+Create Entity: php bin/console make:entity User
+Auth :  php bin/console make:auth
+Create database : php bin/console doctrine:database:create
+Create migration :
+C1 :
+ php bin/console make:migration
+ php bin/console doctrine:migrations:migrate
+C2 : 
+ php bin/console doctrine:schema:update --dump-sql --force
+Debug route: php bin/console debug:router
+Crud : php bin/console make:admin:crud
