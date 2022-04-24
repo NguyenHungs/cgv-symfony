@@ -84,6 +84,21 @@ class Product
      */
     private $review_star;
 
+     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetimetz")
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetimetz")
+     */
+    private $updatedAt;
+
+
     public function __construct()
     {
         $this->category_id = new ArrayCollection();
@@ -286,4 +301,54 @@ class Product
 
         return $this;
     }
+
+    
+     /**
+         * Set createdAt.
+         *
+         * @param \DateTime $createdAt
+         *
+         * @return Order
+         */
+        public function setCreateAt($createdAt)
+        {
+            $this->created_at = $createdAt;
+
+            return $this;
+        }
+
+        /**
+         * Get createdAt.
+         *
+         * @return \DateTime
+         */
+        public function getCreateAt()
+        {
+            return $this->created_at;
+        }
+
+        /**
+         * Set updatedAt.
+         *
+         * @param \DateTime $updatedAt
+         *
+         * @return Category
+         */
+        public function setUpdatedAt($updatedAt)
+        {
+            $this->updated_at = $updatedAt;
+
+            return $this;
+        }
+
+        /**
+         * Get updatedAt.
+         *
+         * @return \DateTime
+         */
+        public function getUpdatedAt()
+        {
+            return $this->updated_at;
+        }
+
 }
