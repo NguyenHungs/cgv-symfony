@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin\Auth;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
@@ -14,15 +14,15 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-class RegistrationController extends AbstractController
+class RegisterController extends AbstractController
 {
     /**
-     * @Route("/register", name="app_register")
+     * @Route("/admin/register", name="admin_register")
      */
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppCustomAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
         if ($this->getUser()) {
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('admin_home');
         }
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -48,7 +48,7 @@ class RegistrationController extends AbstractController
             );
         }
 
-        return $this->render('registration/register.html.twig', [
+        return $this->render('admin/auth/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
     }

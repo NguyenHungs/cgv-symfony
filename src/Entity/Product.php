@@ -12,6 +12,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Product
 {
+    public function __construct()
+    {
+        $this->createdAt= new \DateTime();
+        $this->updatedAt= new \DateTime();
+        $this->category_id = new ArrayCollection();
+        $this->user_id = new ArrayCollection();
+    }
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -97,13 +104,7 @@ class Product
      * @ORM\Column(name="updated_at", type="datetimetz")
      */
     private $updatedAt;
-
-
-    public function __construct()
-    {
-        $this->category_id = new ArrayCollection();
-        $this->user_id = new ArrayCollection();
-    }
+ 
 
     public function getId(): ?int
     {

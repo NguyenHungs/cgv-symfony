@@ -10,6 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Category
 {
+    public function __construct()
+    {
+        $this->createdAt= new \DateTime();
+        $this->updatedAt= new \DateTime();
+    }
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
