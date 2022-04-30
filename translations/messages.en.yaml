@@ -1,0 +1,20 @@
+dashboard : Dashboard
+category : Category
+keyword : Keyword
+product : Product
+create : Create
+edit : Edit
+delete : delete
+submit : Submit
+return : Return
+name : Name
+search : Search
+list : List
+action : Action
+no_result : No result found
+no : No.
+login : Login
+register : Register
+logout : Logout
+profile : Profile
+language : Language

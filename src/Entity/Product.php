@@ -18,6 +18,7 @@ class Product
         $this->updatedAt= new \DateTime();
         $this->category_id = new ArrayCollection();
         $this->user_id = new ArrayCollection();
+        $this->keywords = new ArrayCollection();
     }
     /**
      * @ORM\Id
@@ -37,7 +38,7 @@ class Product
     private $slug;
 
     /**
-     * @ORM\OneToMany(targetEntity=category::class, mappedBy="id")
+     * @ORM\OneToMany(targetEntity=Category::class, mappedBy="id")
      */
     private $category_id;
 
@@ -67,7 +68,7 @@ class Product
     private $pay;
 
     /**
-     * @ORM\OneToMany(targetEntity=user::class, mappedBy="id")
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="id")
      */
     private $user_id;
 
@@ -104,6 +105,11 @@ class Product
      * @ORM\Column(name="updated_at", type="datetimetz")
      */
     private $updatedAt;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Keyword::class, mappedBy="name")
+     */
+    private $keywords;
  
 
     public function getId(): ?int
@@ -136,14 +142,14 @@ class Product
     }
 
     /**
-     * @return Collection<int, category>
+     * @return Collection<int, Category>
      */
     public function getCategoryId(): Collection
     {
         return $this->category_id;
     }
 
-    public function addCategoryId(category $categoryId): self
+    public function addCategoryId(Category $categoryId): self
     {
         if (!$this->category_id->contains($categoryId)) {
             $this->category_id[] = $categoryId;
@@ -350,6 +356,33 @@ class Product
         public function getUpdatedAt()
         {
             return $this->updated_at;
+        }
+
+        /**
+         * @return Collection<int, Keyword>
+         */
+        public function getKeywords(): Collection
+        {
+            return $this->keywords;
+        }
+
+        public function addKeyword(Keyword $keyword): self
+        {
+            if (!$this->keywords->contains($keyword)) {
+                $this->keywords[] = $keyword;
+                $keyword->addName($this);
+            }
+
+            return $this;
+        }
+
+        public function removeKeyword(Keyword $keyword): self
+        {
+            if ($this->keywords->removeElement($keyword)) {
+                $keyword->removeName($this);
+            }
+
+            return $this;
         }
 
 }

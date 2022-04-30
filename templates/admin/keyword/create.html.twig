@@ -1,0 +1,27 @@
+{% extends 'admin/layout/template.html.twig' %}
+{% block title %}  {{ 'create'|trans }}  {{ 'keyword'|trans }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Page Heading -->
+        <a href="{{ url('admin.keyword') }}" class="mb-2 btn btn-primary"> {{ 'return'|trans }}</a>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+      <div class="card-body">
+    <h1 class="h3 mb-2 text-gray-800"> {{ 'create'|trans }}  {{ 'keyword'|trans }}</h1>
+        <div class="table-responsive mt-2">
+        <form method="POST">
+        {{ form_widget(form._token) }}
+          {{ form_widget(form.name) }}
+         <div class="text-danger">
+          {{ form_errors(form.name) }}
+          </div>
+          <div class="text-center mt-5">
+            <button class="btn btn-primary">Lưu
+          </div>
+        <form>
+      </div>
+    </div>
+
+  </div>
+{% endblock %}

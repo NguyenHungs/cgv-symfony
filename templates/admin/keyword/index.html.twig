@@ -1,18 +1,18 @@
 {% extends 'admin/layout/template.html.twig' %}
 {% block title %}
-  {{ 'category'|trans }}
+  {{ 'keyword'|trans }}
 {% endblock %}
 
 {% block content %}
   <div class="container-fluid">
     <!-- page heading -->
     <h1 class="h3 mb-2 text-gray-800">
-      {{ 'category'|trans }}
+      {{ 'keyword'|trans }}
     </h1>
     <!-- datatales example -->
     <div class="card shadow mb-4">
       <div class="card-body">
-        <a href="{{ url('admin.category.create') }}"
+        <a href="{{ url('admin.keyword.create') }}"
           class="mb-2 btn btn-primary">
           {{ 'create'|trans }}
         </a>
@@ -56,21 +56,21 @@
                         </td>
                       </tr>
                     {% endif %}
-                    {% for category in categories %}
+                    {% for keyword in categories %}
                       <tr>
                         <td>
                           {{ loop.index }}
                         </td>
                         <td>
-                          {{ category.getname() }}
+                          {{ keyword.getname() }}
                         </td>
                         <td>
                           <div class="text-center">
                             <a href="{{
                               url(
-                                'admin.category.edit',
+                                'admin.keyword.edit',
                                 {
-                                  id: category.getid()
+                                  id: keyword.getid()
                                 }
                               )
                               }}"
@@ -79,9 +79,9 @@
                             </a>
                             <a href="{{
                               url(
-                                'admin.category.delete',
+                                'admin.keyword.delete',
                                 {
-                                  id: category.getid()
+                                  id: keyword.getid()
                                 }
                               )
                               }}"

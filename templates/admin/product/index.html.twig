@@ -1,39 +1,39 @@
 {% extends 'admin/layout/template.html.twig' %}
 {% block title %}
-  {{ 'category'|trans }}
+  {{ 'product'|trans }}
 {% endblock %}
 
 {% block content %}
   <div class="container-fluid">
-    <!-- page heading -->
+    <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">
-      {{ 'category'|trans }}
+      {{ 'product'|trans }}
     </h1>
-    <!-- datatales example -->
+    <!-- DataTales Example -->
     <div class="card shadow mb-4">
       <div class="card-body">
-        <a href="{{ url('admin.category.create') }}"
+        <a href="{{ url('admin.product.create') }}"
           class="mb-2 btn btn-primary">
           {{ 'create'|trans }}
         </a>
         <div class="table-responsive mt-2">
-          <div id="datatable_wrapper" class="datatables_wrapper dt-bootstrap4">
+          <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
             <div class="row">
               <div class="col-sm-12 col-md-6">
-                <div class="datatables_length" id="datatable_length"></div>
+                <div class="dataTables_length" id="dataTable_length"></div>
               </div>
               <div class="col-sm-12 col-md-6">
-                <div id="datatable_filter" class="datatables_filter"></div>
+                <div id="dataTable_filter" class="dataTables_filter"></div>
               </div>
             </div>
             <div class="row">
               <div class="col-sm-12">
-                <table class="table table-bordered datatable"
-                  id="datatable"
+                <table class="table table-bordered dataTable"
+                  id="dataTable"
                   width="100%"
                   cellspacing="0"
                   role="grid"
-                  aria-describedby="datatable_info"
+                  aria-describedby="dataTable_info"
                   style="width: 100%;">
                   <thead>
                     <tr role="row">
@@ -49,28 +49,28 @@
                     </tr>
                   </thead>
                   <tbody>
-                    {% if (categories|length) == 0 %}
+                    {% if (products|length) == 0 %}
                       <tr>
                         <td colspan="3" class="text-center">
                           {{ 'no_result'|trans }}
                         </td>
                       </tr>
                     {% endif %}
-                    {% for category in categories %}
+                    {% for product in products %}
                       <tr>
                         <td>
                           {{ loop.index }}
                         </td>
                         <td>
-                          {{ category.getname() }}
+                          {{ product.getName() }}
                         </td>
                         <td>
                           <div class="text-center">
                             <a href="{{
                               url(
-                                'admin.category.edit',
+                                'admin.product.edit',
                                 {
-                                  id: category.getid()
+                                  id: product.getId()
                                 }
                               )
                               }}"
@@ -79,9 +79,9 @@
                             </a>
                             <a href="{{
                               url(
-                                'admin.category.delete',
+                                'admin.product.delete',
                                 {
-                                  id: category.getid()
+                                  id: product.getId()
                                 }
                               )
                               }}"
@@ -97,23 +97,31 @@
               </div>
             </div>
             <div class="row">
+              <div class="col-sm-12 col-md-5">
+                <div class="dataTables_info"
+                  id="dataTable_info"
+                  role="status"
+                  aria-live="polite">
+                  Showing 1 to 10 of 57 entries
+                </div>
+              </div>
               <div class="col-sm-12 col-md-7">
-                <div class="datatables_paginate paging_simple_numbers"
-                  id="datatable_paginate">
+                <div class="dataTables_paginate paging_simple_numbers"
+                  id="dataTable_paginate">
                   <ul class="pagination">
                     <li class="paginate_button page-item previous disabled"
-                      id="datatable_previous">
+                      id="dataTable_previous">
                       <a href="#"
-                        aria-controls="datatable"
+                        aria-controls="dataTable"
                         data-dt-idx="0"
                         tabindex="0"
                         class="page-link">
-                        previous
+                        Previous
                       </a>
                     </li>
                     <li class="paginate_button page-item active">
                       <a href="#"
-                        aria-controls="datatable"
+                        aria-controls="dataTable"
                         data-dt-idx="1"
                         tabindex="0"
                         class="page-link">
@@ -122,7 +130,7 @@
                     </li>
                     <li class="paginate_button page-item">
                       <a href="#"
-                        aria-controls="datatable"
+                        aria-controls="dataTable"
                         data-dt-idx="2"
                         tabindex="0"
                         class="page-link">
@@ -131,7 +139,7 @@
                     </li>
                     <li class="paginate_button page-item">
                       <a href="#"
-                        aria-controls="datatable"
+                        aria-controls="dataTable"
                         data-dt-idx="3"
                         tabindex="0"
                         class="page-link">
@@ -140,7 +148,7 @@
                     </li>
                     <li class="paginate_button page-item">
                       <a href="#"
-                        aria-controls="datatable"
+                        aria-controls="dataTable"
                         data-dt-idx="4"
                         tabindex="0"
                         class="page-link">
@@ -149,7 +157,7 @@
                     </li>
                     <li class="paginate_button page-item">
                       <a href="#"
-                        aria-controls="datatable"
+                        aria-controls="dataTable"
                         data-dt-idx="5"
                         tabindex="0"
                         class="page-link">
@@ -158,7 +166,7 @@
                     </li>
                     <li class="paginate_button page-item">
                       <a href="#"
-                        aria-controls="datatable"
+                        aria-controls="dataTable"
                         data-dt-idx="6"
                         tabindex="0"
                         class="page-link">
@@ -166,13 +174,13 @@
                       </a>
                     </li>
                     <li class="paginate_button page-item next"
-                      id="datatable_next">
+                      id="dataTable_next">
                       <a href="#"
-                        aria-controls="datatable"
+                        aria-controls="dataTable"
                         data-dt-idx="7"
                         tabindex="0"
                         class="page-link">
-                        next
+                        Next
                       </a>
                     </li>
                   </ul>

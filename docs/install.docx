@@ -1,7 +1,9 @@
+-Yêu cầu : php 7.4
 Run : php bin/console server:run 0.0.0.0:8080
 Xóa cache: php bin/console cache:clear
 Create controller: php bin/console make:controller HomeController
 Create Entity: php bin/console make:entity User
+Create relation : https://symfony.com/doc/current/doctrine/associations.html
 Auth :  php bin/console make:auth
 Create database : php bin/console doctrine:database:create
 Create migration :

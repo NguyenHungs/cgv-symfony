@@ -1,0 +1,42 @@
+{% extends 'admin/layout/template.html.twig' %}
+{% block title %}  {{ 'create'|trans }}  {{ 'product'|trans }} {% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <a href="{{ url('admin.category') }}" class="mb-2 btn btn-primary"> {{ 'return'|trans }}</a>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+      <div class="card-body">
+     <h1 class="h3 mb-2 text-gray-800"> {{ 'create'|trans }}  {{ 'product'|trans }} </h1>
+        <form method="POST" class="form-group">
+        {{ form_widget(form._token) }}
+          <div class="row">
+            <div class="col-6">
+              {{ form_widget(form.name) }}
+              <div class="text-danger">
+                {{ form_errors(form.name) }}
+              </div>
+            </div>
+            <div class="col-2">
+            <label for="product_image" class="btn btn-success">Chọn ảnh</label>
+              {{ form_widget(form.image) }}
+              <div class="text-danger">
+                {{ form_errors(form.image) }}
+              </div>
+            </div>
+             <div class="col-4">
+             {{ form_widget(form.category_id) }}
+              <div class="text-danger">
+                {{ form_errors(form.category_id) }}
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-5">
+            <button class="btn btn-primary">Lưu
+          </div>
+        <form>
+    </div>
+  </div>
+{% endblock %}

@@ -14,7 +14,7 @@ class LoginController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        if ($this->getUser()) {
+        if ($this->isGranted('IS_AUTHENTICATED_FULLY') || $this->getUser()) {
             return $this->redirectToRoute('admin_home');
         }
 
