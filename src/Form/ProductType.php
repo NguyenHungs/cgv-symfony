@@ -13,6 +13,7 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ProductType extends AbstractType
 {
@@ -31,7 +32,7 @@ class ProductType extends AbstractType
                 'constraints' => [
                     new NotBlank(),
                     new Length([
-                        'max' => 10,
+                        'max' => 100,
                     ]),
                 ],
             ]) 
@@ -42,9 +43,20 @@ class ProductType extends AbstractType
                     return $category ? ucfirst($category->getName()) : '';
                 },
             ])
+            ->add('description', TextareaType::class, [
+                'attr' => ['placeholder' => 'Description' ],
+            ])
             ->add('image', FileType::class, [
                 'attr' => ['class' => 'd-none', 'accept' => 'image/*'],
-                
+            ])
+            ->add('keywords', TextType::class, [
+                'attr' => ['data-role' => 'tagsinput', 'class' => 'form-control form-control-user mb-3', 'placeholder' => 'Keywords'],
+            ])
+            ->add('price', TextType::class, [
+                'attr' => ['class' => 'form-control form-control-user mb-3', 'placeholder' => 'Price'],
+            ])
+            ->add('sale', TextType::class, [
+                'attr' => ['class' => 'form-control form-control-user mb-3', 'placeholder' => 'Sale'],
             ])
             ;
         ;

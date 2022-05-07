@@ -15,6 +15,7 @@
         <a href="{{ url('admin.keyword.create') }}"
           class="mb-2 btn btn-primary">
           {{ 'create'|trans }}
+
         </a>
         <div class="table-responsive mt-2">
           <div id="datatable_wrapper" class="datatables_wrapper dt-bootstrap4">
@@ -49,14 +50,14 @@
                     </tr>
                   </thead>
                   <tbody>
-                    {% if (categories|length) == 0 %}
+                    {% if (keywords|length) == 0 %}
                       <tr>
                         <td colspan="3" class="text-center">
                           {{ 'no_result'|trans }}
                         </td>
                       </tr>
                     {% endif %}
-                    {% for keyword in categories %}
+                    {% for keyword in keywords %}
                       <tr>
                         <td>
                           {{ loop.index }}

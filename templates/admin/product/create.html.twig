@@ -1,6 +1,13 @@
 {% extends 'admin/layout/template.html.twig' %}
 {% block title %}  {{ 'create'|trans }}  {{ 'product'|trans }} {% endblock %}
+{% block style %}  {{ 'create'|trans }}
+<style>
 
+.bootstrap-tagsinput{
+  margin-bottom: 20px;
+}
+</style>
+ {% endblock %}
 {% block content %}
 <div class="container-fluid">
     <!-- Page Heading -->
@@ -32,9 +39,24 @@
               </div>
             </div>
           </div>
-
+             {{ form_widget(form.keywords) }}
+             {{ form_widget(form.description) }}
+               <div class="row">
+            <div class="col-6">
+              {{ form_widget(form.price) }}
+              <div class="text-danger">
+                {{ form_errors(form.price) }}
+              </div>
+            </div>
+            <div class="col-6">
+              {{ form_widget(form.sale) }}
+              <div class="text-danger">
+                {{ form_errors(form.sale) }}
+              </div>
+            </div> 
+          </div>
           <div class="text-center mt-5">
-            <button class="btn btn-primary">Lưu
+            <button class="btn btn-primary" type="submit">Lưu
           </div>
         <form>
     </div>

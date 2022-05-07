@@ -19,6 +19,7 @@ class Product
         $this->category_id = new ArrayCollection();
         $this->user_id = new ArrayCollection();
         $this->keywords = new ArrayCollection();
+        $this->keyword_id = new ArrayCollection();
     }
     /**
      * @ORM\Id
@@ -36,6 +37,11 @@ class Product
      * @ORM\Column(type="string", length=255)
      */
     private $slug;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
 
     /**
      * @ORM\OneToMany(targetEntity=Category::class, mappedBy="id")
@@ -110,6 +116,11 @@ class Product
      * @ORM\ManyToMany(targetEntity=Keyword::class, mappedBy="name")
      */
     private $keywords;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Keyword::class, mappedBy="keyword_id")
+     */
+    private $keyword_id;
  
 
     public function getId(): ?int
@@ -137,6 +148,18 @@ class Product
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }
@@ -380,6 +403,33 @@ class Product
         {
             if ($this->keywords->removeElement($keyword)) {
                 $keyword->removeName($this);
+            }
+
+            return $this;
+        }
+
+        /**
+         * @return Collection<int, Keyword>
+         */
+        public function getKeywordId(): Collection
+        {
+            return $this->keyword_id;
+        }
+
+        public function addKeywordId(Keyword $keywordId): self
+        {
+            if (!$this->keyword_id->contains($keywordId)) {
+                $this->keyword_id[] = $keywordId;
+                $keywordId->addKeywordId($this);
+            }
+
+            return $this;
+        }
+
+        public function removeKeywordId(Keyword $keywordId): self
+        {
+            if ($this->keyword_id->removeElement($keywordId)) {
+                $keywordId->removeKeywordId($this);
             }
 
             return $this;

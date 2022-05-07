@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -17,7 +18,8 @@
       type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
       rel="stylesheet" />
-
+  <link rel="stylesheet" href="{{ asset('tagsinput/src/bootstrap-tagsinput.css') }}">
+  
     <!-- Custom styles for this template -->
     <link href="/admin/css/sb-admin-2.min.css" rel="stylesheet" />
     {% block style %}
@@ -377,7 +379,43 @@
 
     <!-- Core plugin JavaScript -->
     <script src="/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="{{ asset('tagsinput/src/bootstrap-tagsinput.js') }}"></script>
+  <script src="https://cdn.tiny.cloud/1/scyyhisbnhdkunu12k2n6it3abv5yvjwal0shkuxqb0ap4n8/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script type="text/javascript">
+       tinymce.init({
+    selector: '.textarea',
+    plugins: [
+    "advlist autolink lists link image charmap hr anchor pagebreak",
+    "insertdatetime media nonbreaking save table directionality",
+    "code noneditable"
+    ],
+    noneditable_editable_class: "is-editable",
+    noneditable_noneditable_class: "is-locked",
+    image_title: true,
+    automatic_uploads: true,
+    file_picker_types: 'image',
+    file_picker_callback: function(cb, value, meta) {
+        var input = document.createElement('input');
+        input.setAttribute('type', 'file');
+        input.setAttribute('accept', 'image/*');
+        input.onchange = function () {
+            var file = this.files[0];
+            var reader = new FileReader();
 
+            reader.onload = function () {
+                var id = 'blobid' + (new Date()).getTime();
+                var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                var base64 = reader.result.split(',')[1];
+                var blobInfo = blobCache.create(id, file, base64);
+                blobCache.add(blobInfo);
+                cb(blobInfo.blobUri(), {title: file.name});
+            };
+            reader.readAsDataURL(file);
+        };
+        input.click();
+    }
+  });
+      </script>
     <!-- Custom scripts for all pages -->
     <script src="/admin/js/sb-admin-2.min.js"></script>
 

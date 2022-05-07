@@ -21,3 +21,6 @@
 /.web-server-pid
 ###< symfony/web-server-bundle ###
 /node_modules/
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###

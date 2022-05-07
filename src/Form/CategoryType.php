@@ -22,7 +22,7 @@ class CategoryType extends AbstractType
                 'constraints' => [
                     new NotBlank(),
                     new Length([
-                        'max' => 10,
+                        'max' => 100,
                     ]),
                 ],
             ]) 
