@@ -15,3 +15,4 @@ C2 :
 Debug route: php bin/console debug:router
 Crud : php bin/console make:admin:crud
 Register form : php bin/console make:registration-form
+

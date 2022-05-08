@@ -1,3 +1,6 @@
 Đa ngôn ngữ : https://symfony.com/doc/current/translation.html
 Route with string key : https://stackoverflow.com/questions/3073944/symfony-route-parameter-requirement-restriction
 Return back : https://code-examples.net/en/q/b57570
+Authen API :
+ - https://digitalfortress.tech/php/jwt-authentication-with-symfony/
+ - https://github.com/konshensx16/symfony-todo-backend
